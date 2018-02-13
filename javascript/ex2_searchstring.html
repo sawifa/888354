@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script language="javascript">
+	function CheckInput(){
+		var txtinput = document.getElementById('inputtxt').value;
+		var sch = document.getElementById('sch').value;
+		var array = txtinput.split(" ");//ถ้าเจอวรรคแตกเก็บลง array t
+		var sum=0;
+			for(var i=0; i<array.length;i++){
+				if(document.getElementById("yes").checked){
+					if(array[i].indexOf(sch,0) != -1){
+							sum++;
+					}
+				}else if(document.getElementById("no").checked){
+					if(array[i]>='a' && array[i] <= 'z'){ 
+						array[i] = array[i].toLowerCase();
+						sch = sch.toLowerCase();
+					}else if(array[i]>='A' && array[i] <= 'Z'){ 
+						array[i] = array[i].toUpperCase();
+						sch = sch.toUpperCase();
+					}
+					if(array[i].indexOf(sch,0) != -1){
+							sum++;
+					}
+				}
+			}
+			document.getElementById('count').innerHTML = 'Result for Search: '+sum;
+	}
+</script>
+</head>
+<body>
+</script>
+
+	<center>
+		<h1>Ex2 - Search String Non Sensitive Case</h1>
+		<hr>
+		<p>Text Input: 
+		<textarea id="inputtxt"></textarea>
+		</p>
+		<p>Sensitive Case : 
+	        <input type="radio" name="case" id="yes" value="yes" >Yes
+	        <input type="radio" name="case" id="no" value="no">No
+	    </p>
+	    <p>Search :
+	    	<input type="text" name="sch" id="sch">
+	    </p>
+	    <button onclick="CheckInput()">search</button>
+		<br>
+        <b id="count"></b>
+	</center>
+</body>
+</html>

@@ -5,26 +5,29 @@
 	function CheckInput(){
 		var txtinput = document.getElementById('inputtxt').value;
 		var sch = document.getElementById('sch').value;
-		var array = txtinput.split(" ");//ถ้าเจอวรรคแตกเก็บลง array t
-		var sum=0;
-			for(var i=0; i<array.length;i++){
+		var array = txtinput.split(" ");
+		var sum=0;			
 				if(document.getElementById("yes").checked){
-					if(array[i].indexOf(sch,0) != -1){
-							sum++;
-					}
-				}else if(document.getElementById("no").checked){
-					if(array[i]>='a' && array[i] <= 'z'){ 
-						array[i] = array[i].toLowerCase();
-						sch = sch.toLowerCase();
-					}else if(array[i]>='A' && array[i] <= 'Z'){ 
-						array[i] = array[i].toUpperCase();
-						sch = sch.toUpperCase();
-					}
+				for(var i=0; i<array.length;i++){
+				
 					if(array[i].indexOf(sch,0) != -1){
 							sum++;
 					}
 				}
-			}
+				}else if(document.getElementById("no").checked){
+					for(var i=0; i<array.length;i++){
+						if(array[i]>='a' && array[i] <= 'z'){ 
+							array[i] = array[i].toLowerCase();
+							sch = sch.toLowerCase();
+						}else if(array[i]>='A' && array[i] <= 'Z'){ 
+							array[i] = array[i].toUpperCase();
+							sch = sch.toUpperCase();
+						}
+						if(array[i].indexOf(sch,0) != -1){
+							sum++;
+						}
+					}	
+				}
 			document.getElementById('count').innerHTML = 'Result for Search: '+sum;
 	}
 </script>
